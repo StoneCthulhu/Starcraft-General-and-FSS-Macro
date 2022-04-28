@@ -1,44 +1,134 @@
-﻿numpad1::
-Send, {Enter}-s 1{Enter}
+﻿fssModeIsOn:=0	;toggle for fss state
+
+RemoveToolTip:
+tooltip
 return
 
-numpad2::
-Send, {Enter}-s 2{Enter}
+numlock::
+ 	{
+   		KeyWait, numlock
+   		KeyWait, numlock, D T.3
+
+   		If (!ErrorLevel)
+   		 {	
+			if (!fssModeIsOn)
+			{
+				fssModeIsOn:=1
+      				gosub, fssOn
+			}
+			else
+			{
+				fssModeIsOn:=0
+				gosub, fssOff
+			}
+    		}
+ 	}
 return
 
-numpad3::
-Send, {Enter}-s 3{Enter}
+fssOn:
+ 	{
+  		tooltip, FSS MODE ON!, 0, 0
+		SetTimer, RemoveToolTip, -3000
+		return
+
+		numpad1::
+		if(fssModeIsOn)
+		{
+			Send, {Enter}-s 1{Enter}
+			return
+		}
+
+		numpad2::
+		if(fssModeIsOn)
+		{
+			Send, {Enter}-s 2{Enter}
+			return
+		}
+
+		numpad3::
+		if(fssModeIsOn)
+		{
+			Send, {Enter}-s 3{Enter}
+			return
+		}
+
+		numpad4::
+		if(fssModeIsOn)
+		{
+			Send, {Enter}-s 4{Enter}
+			return
+		}
+
+		numpad5::
+		if(fssModeIsOn)
+		{
+			Send, {Enter}-s 5{Enter}
+			return
+		}
+
+		numpadadd::
+		if(fssModeIsOn)
+		{
+			Send, {Enter}-i 1{Enter}
+			return
+		}
+
+		numpadsub::
+		if(fssModeIsOn)
+		{
+			Send, {Enter}-i .2{Enter}
+			return
+		}
+
+		numpadenter::
+		if(fssModeIsOn)
+		{
+			Send, {Enter}-i 3{Enter}
+			return
+		}
+
+		return ;may have to erase this
+	}
 return
 
-numpad4::
-Send, {Enter}-s 4{Enter}
-return
+fssOff:
+	{
+		tooltip, FSS MODE OFF!, 0, 0
+		SetTimer, RemoveToolTip, -3000
+		return
 
-numpad5::
-Send, {Enter}-s 5{Enter}
-return
+		numpaddot::
+		Send, {z}{a}
+		return
 
-numpadadd::
-Send, {Enter}-i 1{Enter}
-return
+		lshift::
+		Send, {z}{e}
+		return
 
-numpadsub::
-Send, {Enter}-i .2{Enter}
-return
+		numpad0::
+		Send, {z}{f}
+		return
 
-numpadenter::
-Send, {Enter}-i 3{Enter}
-return
+		scrollLock::
+		Send, {ctrl down}{rshift down}{f}{ctrl up}{rshift up}
+		return
 
-numpaddot::
-Send, {z}{a}
-return
+		~$RButton::
+		KeyWait RButton, T0.25
+		If(ErrorLevel == 1)
+		{
+   	 		While GetKeyState("RButton", "P")
+			{
+        		Click, Right
+        		Sleep 130  ;  milliseconds
+    			}
+		}
+		else
+		return
+	return
 
-lshift::
-Send, {z}{e}
+	pause::
+	send, {Enter}-{!}save{Enter}
+	return
+	}
 return
-
-numpad0::
-Send, {z}{f}
-return
-
