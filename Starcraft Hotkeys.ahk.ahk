@@ -127,8 +127,9 @@ fssOff:
 		return
 	return
 
-	pause::
-	send, {Enter}-{!}save{Enter}
+	numpaddiv::
+	send, {Enter}{!}save{Enter}
 	return
+
 	}
 return
