@@ -4,97 +4,199 @@ RemoveToolTip:
 tooltip
 return
 
-numlock::
+pgup::
  	{
-   		switch toggle
+   		switch ++toggle
 		{
 			case 0:
-				toggle++
+				
 				gosub, TOGGLE_RIFLEMAN_ON
 				
 			case 1:
-				toggle++
+				
 				gosub, TOGGLE_MEDIC_ON
 				
 			case 2:
-				toggle++
+				
 				gosub, TOGGLE_AUTOMATIC-RIFLEMAN_ON
 				
 			case 3:
-				toggle++
+				
 				gosub, TOGGLE_FLAMETHROWER_ON
 				
 			case 4:
-				toggle++
+				
 				gosub, TOGGLE_ENFORCER_ON
 				
 			case 5:
-				toggle++
+				
 				gosub, TOGGLE_CAVALRY-SCOUT_ON
 				
 			case 6:
-				toggle++
+				
 				gosub, TOGGLE_MARKSMAN_ON
 				
 			case 7:
-				toggle++
+				
 				gosub, TOGGLE_JAVELIN-GUNNER_ON
 				
 			case 8:
-				toggle++
+				
 				gosub, TOGGLE_PLATOON-LEADER_ON
 				
 			case 9:
-				toggle++
+				
 				gosub, TOGGLE_ENGINEER_ON
 				
 			case 10:
-				toggle++
+				
 				gosub, TOGGLE_CYBORG_ON
 				
 			case 11:
-				toggle++
+				
 				gosub, TOGGLE_GHOST_ON
 				
 			case 12:
-				toggle++
+				
 				gosub, TOGGLE_FIRE-SUPPORT-SPECIALIST_ON
 				
 			case 13:
-				toggle++
+				
 				gosub, TOGGLE_COMMANDO_ON
 				
 			case 14:
-				toggle++
+				
 				gosub, TOGGLE_ENERGY-WEAPON-SPECIALIST_ON
 				
 			case 15:
-				toggle++
+				
 				gosub, TOGGLE_SPECTER_ON
 				
 			case 16:
-				toggle++
+				
 				gosub, TOGGLE_JTAC_ON
 				
 			case 17:
-				toggle++
+				
 				gosub, TOGGLE_HEAVY-GUNNER_ON
 				
 			case 18:
-				toggle++
+				
 				gosub, TOGGLE_MERCENARY_ON
 				
 			case 19:
-				toggle++
+				
 				gosub, TOGGLE_MECH-OPERATOR_ON
 				
 			case 20:
+				
+				gosub, TOGGLE_SPECIALIZED_HOTKEYS_OFF
+
+			case 21:
+				toggle=20
+				tooltip, TOGGLE OUT OF RANGE, 0, 0
+				SetTimer, RemoveToolTip, -3000
+				
+		}
+ 	}
+return
+
+pgdn::
+ 	{
+   		switch --toggle
+		{
+			case -1:
 				toggle=0
+				tooltip, TOGGLE OUT OF RANGE, 0, 0
+				SetTimer, RemoveToolTip, -3000
+			case 0:
+				
+				gosub, TOGGLE_RIFLEMAN_ON
+				
+			case 1:
+				
+				gosub, TOGGLE_MEDIC_ON
+				
+			case 2:
+				
+				gosub, TOGGLE_AUTOMATIC-RIFLEMAN_ON
+				
+			case 3:
+				
+				gosub, TOGGLE_FLAMETHROWER_ON
+				
+			case 4:
+				
+				gosub, TOGGLE_ENFORCER_ON
+				
+			case 5:
+				
+				gosub, TOGGLE_CAVALRY-SCOUT_ON
+				
+			case 6:
+				
+				gosub, TOGGLE_MARKSMAN_ON
+				
+			case 7:
+				
+				gosub, TOGGLE_JAVELIN-GUNNER_ON
+				
+			case 8:
+				
+				gosub, TOGGLE_PLATOON-LEADER_ON
+				
+			case 9:
+				
+				gosub, TOGGLE_ENGINEER_ON
+				
+			case 10:
+				
+				gosub, TOGGLE_CYBORG_ON
+				
+			case 11:
+				
+				gosub, TOGGLE_GHOST_ON
+				
+			case 12:
+				
+				gosub, TOGGLE_FIRE-SUPPORT-SPECIALIST_ON
+				
+			case 13:
+				
+				gosub, TOGGLE_COMMANDO_ON
+				
+			case 14:
+				
+				gosub, TOGGLE_ENERGY-WEAPON-SPECIALIST_ON
+				
+			case 15:
+				
+				gosub, TOGGLE_SPECTER_ON
+				
+			case 16:
+				
+				gosub, TOGGLE_JTAC_ON
+				
+			case 17:
+				
+				gosub, TOGGLE_HEAVY-GUNNER_ON
+				
+			case 18:
+				
+				gosub, TOGGLE_MERCENARY_ON
+				
+			case 19:
+				
+				gosub, TOGGLE_MECH-OPERATOR_ON
+				
+			case 20:
+				
 				gosub, TOGGLE_SPECIALIZED_HOTKEYS_OFF
 				
 		}
  	}
 return
+
 
 TOGGLE_RIFLEMAN_ON:
 	{
@@ -448,7 +550,7 @@ TOGGLE_SPECIALIZED_HOTKEYS_OFF:
 
 		~q::
 		sleep 7500
-		SoundPlay, C:\Users\bnecessa\Downloads\jumpsready.wav
+		SoundPlay, C:\Sounds\jumpready.wav
 		return
 	
 	}
